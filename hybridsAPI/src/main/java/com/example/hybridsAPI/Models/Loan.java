@@ -12,7 +12,7 @@ public class Loan {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int idLoan;
+    public Integer idLoan;
 
     @ManyToOne
     @JoinColumn(name = "idBook")
@@ -22,11 +22,11 @@ public class Loan {
     @JoinColumn(name = "idUser")
     private User idUser;
 
-    public Loan(int idLoan){
+    public Loan(Integer idLoan){
         this.idLoan=idLoan;
     }
 
-    public int getIdLoan() {
+    public Integer getIdLoan() {
         return idLoan;
     }
 
@@ -46,7 +46,7 @@ public class Loan {
         this.idBook = idBook;
     }
 
-    public void setIdLoan(int idLoan) {
+    public void setIdLoan(Integer idLoan) {
         this.idLoan = idLoan;
     }
 }

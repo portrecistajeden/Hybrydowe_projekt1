@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUser;
+    private Integer idUser;
 
     @Column(name = "login", nullable = false)
     private String login;
@@ -23,7 +23,7 @@ public class User {
     @JoinColumn(name = "idRole")
     private Role idRole;
 
-    public User(int idUser, String login, String password){
+    public User(Integer idUser, String login, String password){
        super();
         this.idUser=idUser;
         this.login=login;
@@ -34,7 +34,7 @@ public class User {
     public User(){
         super();
     }
-    public long getIdUser() {
+    public Integer getIdUser() {
         return idUser;
     }
 
@@ -50,7 +50,7 @@ public class User {
         return idRole;
     }
 
-    public void setIdUser(int idUser) {
+    public void setIdUser(Integer idUser) {
         this.idUser = idUser;
     }
 

@@ -11,12 +11,12 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int idRole;
+    public Integer idRole;
 
     @Column(name = "role", nullable = false)
     private String role;
 
-    public Role(int idRole, String role){
+    public Role(Integer idRole, String role){
         this.idRole=idRole;
         this.role=role;
     }
@@ -24,7 +24,7 @@ public class Role {
         super();
     }
 
-    public int getIdRole() {
+    public Integer getIdRole() {
         return idRole;
     }
 
@@ -32,7 +32,7 @@ public class Role {
         return role;
     }
 
-    public void setIdRole(int idRole) {
+    public void setIdRole(Integer idRole) {
         this.idRole = idRole;
     }
 

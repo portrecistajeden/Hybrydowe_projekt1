@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBook;
+    private Integer idBook;
 
     @Column(name = "authors", nullable = false)
     private String authors;
@@ -21,7 +21,7 @@ public class Book {
     @Column(name = "yearofpublishment", nullable = false)
     private int yearofpublishment;
 
-    public Book(int idBook, String authors, String title, int year){
+    public Book(Integer idBook, String authors, String title, int year){
         this.idBook=idBook;
         this.authors=authors;
         this.title=title;
@@ -31,7 +31,7 @@ public class Book {
     public Book(){
         super();
     }
-    public int getIdBook() {
+    public Integer getIdBook() {
         return idBook;
     }
 
@@ -47,7 +47,7 @@ public class Book {
         return yearofpublishment;
     }
 
-    public void setIdBook(int idBook) {
+    public void setIdBook(Integer idBook) {
         this.idBook = idBook;
     }
 
