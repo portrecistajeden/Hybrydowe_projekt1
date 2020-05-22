@@ -31,21 +31,23 @@ public class BookController {
         return ResponseEntity.ok().body(book);
     }
 
-    @GetMapping("/books/title")
-    public Book getByTitle(@RequestParam String title)
+    @GetMapping("/books/title/{title}")
+    public List<Book> getByTitle(@PathVariable(value = "title") String title)
     {
-            Book book=bookRepository
-                    .findByTitle(title);
+            List<Book> book=bookRepository
+                    .findByTitle(title.toUpperCase());
 
             return book;
     }
 
+    @GetMapping("/books/year/{yearofpublishment}")
+    public  List<Book> getByyearofpublishment(@PathVariable(value = "yearofpublishment") int yearofpublishment)
+    {
+        List<Book> book=bookRepository
+                .findByyearofpublishment(yearofpublishment);
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello world";
+        return book;
     }
-
 
     @DeleteMapping("/books/{id}")
     public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Integer id) throws Exception {
