@@ -50,11 +50,12 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Integer id) throws Exception {
+    public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Integer id)
+            throws Exception {
         Book book =
                 bookRepository
                         .findById(id)
-                        .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + id));
+                        .orElseThrow(() -> new ResourceNotFoundException("Book not found on :: " + id));
         bookRepository.delete(book);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted book "+book.getTitle(), Boolean.TRUE);

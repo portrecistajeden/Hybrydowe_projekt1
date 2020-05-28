@@ -24,16 +24,14 @@ public class User {
     private Role idRole;
 
     public User(Integer idUser, String login, String password){
-       super();
+        super();
         this.idUser=idUser;
         this.login=login;
         this.password=password;
-
     }
 
-    public User(){
-        super();
-    }
+    public User(){}
+
     public Integer getIdUser() {
         return idUser;
     }
