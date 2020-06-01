@@ -26,6 +26,8 @@ public class Loan {
         this.idLoan=idLoan;
     }
 
+    public Loan() {super();}
+
     public Integer getIdLoan() {
         return idLoan;
     }

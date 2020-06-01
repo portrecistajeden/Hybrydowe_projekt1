@@ -44,7 +44,7 @@ public class BookController {
     public  List<Book> getByyearofpublishment(@PathVariable(value = "yearofpublishment") int yearofpublishment)
     {
         List<Book> book=bookRepository
-                .findByyearofpublishment(yearofpublishment);
+                .findByearofpublishment(yearofpublishment);
 
         return book;
     }

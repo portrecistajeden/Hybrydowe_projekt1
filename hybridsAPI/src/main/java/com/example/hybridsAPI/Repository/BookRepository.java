@@ -16,7 +16,7 @@ public interface BookRepository extends JpaRepository<Book,Integer> {
     List<Book> findByTitle(@Param("title") String title);
 
     @Query("select b from Book b where b.yearofpublishment=?1")
-    List<Book> findByyearofpublishment(@Param("yearofpublishment") int yearofpublishment);
+    List<Book> findByearofpublishment(@Param("yearofpublishment") int yearofpublishment);
 
     @Query("select b from Book b where b.authors like :author%")
     List<Book> findByAuthor(@Param("author") String author);

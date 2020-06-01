@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role,Integer> {
-    @Query("select r from role where r.role like :name%")
+
+    @Query("select r from Role r where r.role like :name%")
     Role findByName(@Param("name") String name);
 }
