@@ -20,8 +20,8 @@ public class User {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "idRole")
-    private Role idRole;
+    @JoinColumn(name = "role")
+    private Role role;
 
     public User(Integer idUser, String login, String password){
         super();
@@ -45,7 +45,7 @@ public class User {
     }
 
     public Role getRole() {
-        return idRole;
+        return role;
     }
 
     public void setIdUser(Integer idUser) {
@@ -61,6 +61,6 @@ public class User {
     }
 
     public void setRole(Role role) {
-        this.idRole = role;
+        this.role = role;
     }
 }
