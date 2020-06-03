@@ -9,7 +9,7 @@
 
       
       <ul>
-         <li v-for="book of library" :key="book.idBook">
+         <li v-for="book in library" :key="book.idBook">
                             {{book.title}}
                 </li>
       </ul>
@@ -20,7 +20,7 @@
 <script>
 import axios from 'axios';
 export default {
-  name: "Books",
+  name: "BooksList",
   data() {
     return {
       library: []
