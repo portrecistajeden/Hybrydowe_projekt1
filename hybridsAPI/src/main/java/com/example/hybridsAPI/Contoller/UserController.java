@@ -21,7 +21,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-
     @Autowired
     private RoleRepository roleRepository;
 
@@ -32,7 +31,7 @@ public class UserController {
 
     @GetMapping("users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable(value = "id") Integer idUser)
-        throws ResourceNotFoundException{
+            throws ResourceNotFoundException{
         User user = userRepository
                 .findById(idUser)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + idUser));
@@ -41,7 +40,7 @@ public class UserController {
 
 
 
-    @PostMapping("/users") //create normalUser
+    @PostMapping("/sign-up") //create normalUser
     public User createUser(@Valid @RequestBody User user){
         user.setRole(roleRepository.findByName("ROLE_USER"));
         return userRepository.save(user);
@@ -52,7 +51,7 @@ public class UserController {
     public ResponseEntity<User> updateUser(
             @PathVariable(value = "id") Integer idUser,
             @Valid @RequestBody User userDetails)
-        throws ResourceNotFoundException {
+            throws ResourceNotFoundException {
         User user = userRepository
                 .findById(idUser)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + idUser));
@@ -67,7 +66,7 @@ public class UserController {
 
     @DeleteMapping("users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer idUser)
-        throws Exception {
+            throws Exception {
         User user = userRepository
                 .findById(idUser)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + idUser));

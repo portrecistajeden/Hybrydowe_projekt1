@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e725b815-4e94-4918-a600-d18ea4609356" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hybridsAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hybridsAPI.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +24,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../coding/SpringBootRestMySQL" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HybridsApiApplication">
     <configuration name="HybridsApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.hybridsAPI.HybridsApiApplication" />
       <module name="hybridsAPI" />
@@ -35,6 +38,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HybridsApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="hybridsAPI" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.hybridsAPI.HybridsApiApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -55,8 +65,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591039560986</updated>
+      <workItem from="1591198308185" duration="2089000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="798" y="192" key="FileChooserDialogImpl" timestamp="1591049401814">
