@@ -38,19 +38,39 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-
-
-    @PostMapping("/sign-up") //create normalUser
-    public User createUser(@Valid @RequestBody User user){
-        user.setRole(roleRepository.findByName("ROLE_USER"));
+    @PostMapping("/registerAdmin") //create normalUser
+    public User createAdmin(@RequestBody User user){
+        user.setRole(roleRepository.findByName("ADMIN"));
         return userRepository.save(user);
     }
 
+    @PostMapping("/register") //create normalUser
+    public User createUser(@RequestBody User user){
+        user.setRole(roleRepository.findByName("USER"));
+        if(user.getLogin().equals(userRepository.findByLogin(user.getLogin()))){
+            return user;
+        }
+        return userRepository.save(user);
+    }
+
+    @PostMapping("/login")
+    public Integer loginUser(@RequestBody User userr){
+        User user=userRepository
+                .logging(userr.getLogin(),userr.getPassword());
+//        if(user!=null){
+//            return "loggin";
+//        }
+//        else{
+//            return "not logging";
+//        }
+            return user.getIdUser();
+
+    }
 
     @PutMapping("/users/{id}") //update login, password, role
     public ResponseEntity<User> updateUser(
             @PathVariable(value = "id") Integer idUser,
-            @Valid @RequestBody User userDetails)
+             @RequestBody User userDetails)
             throws ResourceNotFoundException {
         User user = userRepository
                 .findById(idUser)
