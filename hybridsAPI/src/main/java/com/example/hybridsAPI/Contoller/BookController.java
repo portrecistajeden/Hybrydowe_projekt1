@@ -10,16 +10,10 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -77,22 +71,20 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    public Map<String, Boolean> deleteBook(@PathVariable(value = "id") int id) throws Exception {
+    public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Integer id) throws Exception {
         Book book =
                 bookRepository
                         .findById(id)
                         .orElseThrow(() -> new ResourceNotFoundException("Book not found on :: " + id));
-     //  if(loansRepository.findByBookID(id) == null)
+        if(loansRepository.findByBookID(id) == null)
             bookRepository.delete(book);
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted book "+book.getTitle(), Boolean.TRUE);
         return response;
     }
 
-
-
     @PostMapping("/books")
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook( @RequestBody Book book) {
         return bookRepository.save(book);
     }
 

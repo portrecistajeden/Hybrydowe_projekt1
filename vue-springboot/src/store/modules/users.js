@@ -34,7 +34,7 @@ const actions={
          .then(()=>commit('REF'))
     },
     searchUser({commit},searchValue){
-         axios.get('http://localhost:8080//users/username/'+searchValue)
+         axios.get('http://localhost:8080/users/username/'+searchValue)
         .then(result=>commit('USERS',result.data))
     }
 }

@@ -85,9 +85,11 @@ export default {
              this.$store.dispatch('getUsers')
            }
            else {
-             console.log("halo")
+             
+             
                this.$store.dispatch('searchUser',this.searchValue)
                }
+               console.log("halo")
           
            }
            catch(e){

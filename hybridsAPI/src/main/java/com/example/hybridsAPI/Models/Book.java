@@ -1,6 +1,5 @@
 package com.example.hybridsAPI.Models;
 
-import org.codehaus.plexus.component.annotations.Requirement;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -13,15 +12,12 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idBook;
 
-    @Requirement
     @Column(name = "authors", nullable = false)
     private String authors;
 
-    @Requirement
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Requirement
     @Column(name = "yearofpublishment", nullable = false)
     private int yearofpublishment;
 

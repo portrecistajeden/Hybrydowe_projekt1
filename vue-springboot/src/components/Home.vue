@@ -1,5 +1,7 @@
 <template>
-    <span> <h1>Wypożyczalnia</h1></span>
+    <span> <h1>Biblioteka</h1></span>
+
+    
 </template>
 
 <script>

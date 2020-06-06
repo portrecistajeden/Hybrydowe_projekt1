@@ -34,6 +34,7 @@ const actions={
     },
 
     addBook({commit},book){
+        console.log(book)
          axios.post('http://localhost:8080/books',book)
          .then(()=>commit('REFRESH'))
     },

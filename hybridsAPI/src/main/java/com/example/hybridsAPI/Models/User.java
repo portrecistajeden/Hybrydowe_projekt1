@@ -1,7 +1,6 @@
 package com.example.hybridsAPI.Models;
 
 
-import org.codehaus.plexus.component.annotations.Requirement;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
@@ -14,11 +13,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idUser;
 
-    @Requirement
     @Column(name = "login", nullable = false)
     private String login;
 
-    @Requirement
     @Column(name = "password", nullable = false)
     private String password;
 

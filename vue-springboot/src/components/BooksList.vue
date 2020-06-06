@@ -73,6 +73,8 @@ export default {
              this.$store.dispatch('getBooks')
            }
            catch(e){
+             console.log("wtf")
+             this.$router.push('/login')
              console.error(e);
            }
    },

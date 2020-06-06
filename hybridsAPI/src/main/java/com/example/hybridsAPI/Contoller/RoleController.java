@@ -26,7 +26,7 @@ public class RoleController {
     }
 
     @PostMapping("/roles")
-    public Role createRole(@RequestBody Role role){
+    public Role createRole(@Valid @RequestBody Role role){
         return roleRepository.save(role);
     }
 

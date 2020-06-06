@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import {mapGetters} from 'vuex'
+//import axios from 'axios';
+//import {mapGetters} from 'vuex'
 export default {
   name: "Login",
   data() {
@@ -34,42 +34,29 @@ export default {
       errors:[]
     };
   },
-  computed:{
-      ...mapGetters({
-          logged:'logged',
-         // refresh:'refresh'
-        }
-      )
-  },
-  watch:{
-    refresh(){
-      this.$router.push("/book");
-    }
-  },
- 
- async mounted(){
-          //  try{
-          //   await axios.get('http://localhost:8080/users').then(users => this.usersList=users.data)
-             
-          //  }
-          //  catch(e){
-          //    console.error(e);
-          //  }
-   },
+
    methods:{
     async Login(){
           try{
-
-            // this.$store.dispatch('login',{
-            //   login:this.user.username,
-            //   password:this.user.password
-            // })
-             await axios.post('http://localhost:8080/login',{
+         //   console.log(this.user.username)
+          //  console.log(this.user.password)
+            this.$store.dispatch('login',{
               login:this.user.username,
               password:this.user.password
+            })
+
+            //  this.$store.dispatch('addBook',{
+            //   authors:this.book.bookAuthors,
+            //   title:this.book.bookTitle,
+            //   yearofpublishment:this.book.bookYearOfPublishment
               
-            });
-            this.$router.push("/books");
+            // })
+            //  await axios.post('http://localhost:8080/login',{
+            //   login:this.user.username,
+            //   password:this.user.password
+              
+            // });
+           // this.$router.push("/books");
              
               this.$store.state.LoggedUser.login=this.user.username
            }

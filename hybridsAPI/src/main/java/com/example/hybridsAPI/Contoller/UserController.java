@@ -1,15 +1,20 @@
 package com.example.hybridsAPI.Contoller;
 
-import com.example.hybridsAPI.Models.Book;
+import com.example.hybridsAPI.Models.Loan;
 import com.example.hybridsAPI.Models.User;
+import com.example.hybridsAPI.Repository.LoansRepository;
 import com.example.hybridsAPI.Repository.RoleRepository;
 import com.example.hybridsAPI.Repository.UserRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -20,6 +25,7 @@ public class UserController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -33,6 +39,8 @@ public class UserController {
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + idUser));
         return ResponseEntity.ok().body(user);
     }
+
+
 
     @PostMapping("/registerAdmin") //create normalUser
     public User createAdmin(@RequestBody User user){
@@ -49,39 +57,6 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @PostMapping("/login")
-    public User loginUser(@RequestBody User userr){
-
-       // long currentTime= System.currentTimeMillis();
-        //definiowanie zawartości tokena
-//        return  Jwts.builder()
-//                .setSubject(userr.getLogin())//odnosi się do użytkownika, kto dostaje kluc
-//                .setIssuedAt(new Date(currentTime))
-//                .setExpiration(new Date(currentTime+20000))
-//                .signWith(SignatureAlgorithm.HS512, userr.getPassword())
-//                .compact();
-
-                        User user=userRepository
-               .logging(userr.getLogin(),userr.getPassword());
-
-
-
-//        if(user!=null){
-//            return "loggin";
-//        }
-//        else{
-//            return "not logging";
-  // }
-
-       // String token=getJWTToken(userr.getLogin());
-
-           return user;
-
-    }
-    @GetMapping("/users/username/{login}")
-    public List<User> serachUserbyLogin(@PathVariable(value = "login") String login){
-       return userRepository.findByLogin(login);
-    }
 
     @PutMapping("/users/{id}") //update login, password, role
     public ResponseEntity<User> updateUser(
@@ -99,7 +74,12 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @GetMapping("/users/username/{login}")
+    public List<User> serachUserbyLogin(@PathVariable(value = "login") String login){
+        List<User> users=userRepository.searchingUser(login);
 
+        return users;
+    }
     @DeleteMapping("users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer idUser)
             throws Exception {

@@ -12,12 +12,12 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book,Integer> {
 
-    @Query("select b from Book b where b.title like %:title%")
+    @Query("select b from Book b where b.title like :title%")
     List<Book> findByTitle(@Param("title") String title);
 
     @Query("select b from Book b where b.yearofpublishment=?1")
     List<Book> findByearofpublishment(@Param("yearofpublishment") int yearofpublishment);
 
-    @Query("select b from Book b where b.authors like %:author%")
+    @Query("select b from Book b where b.authors like :author%")
     List<Book> findByAuthor(@Param("author") String author);
 }

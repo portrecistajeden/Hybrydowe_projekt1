@@ -44,5 +44,6 @@ export default new Router({
           path:"/users",
           component:UsersList
         }
-    ]
+    ],
+    
 });
