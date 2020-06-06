@@ -8,6 +8,7 @@ import com.example.hybridsAPI.Repository.UserRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -23,6 +24,7 @@ public class UserController {
 
     @Autowired
     private RoleRepository roleRepository;
+
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
@@ -40,9 +42,18 @@ public class UserController {
 
 
 
-    @PostMapping("/sign-up") //create normalUser
+    @PostMapping("/registerAdmin") //create normalUser
+    public User createAdmin(@RequestBody User user){
+        user.setRole(roleRepository.findByName("ADMIN"));
+        return userRepository.save(user);
+    }
+
+    @PostMapping("/register") //create normalUser
     public User createUser(@RequestBody User user){
-        user.setRole(roleRepository.findByName("ROLE_USER"));
+        user.setRole(roleRepository.findByName("USER"));
+        if(user.getLogin().equals(userRepository.findByLogin(user.getLogin()))){
+            return user;
+        }
         return userRepository.save(user);
     }
 
@@ -50,7 +61,7 @@ public class UserController {
     @PutMapping("/users/{id}") //update login, password, role
     public ResponseEntity<User> updateUser(
             @PathVariable(value = "id") Integer idUser,
-            @Valid @RequestBody User userDetails)
+             @RequestBody User userDetails)
             throws ResourceNotFoundException {
         User user = userRepository
                 .findById(idUser)
@@ -63,7 +74,12 @@ public class UserController {
         return ResponseEntity.ok(updatedUser);
     }
 
+    @GetMapping("/users/username/{login}")
+    public List<User> serachUserbyLogin(@PathVariable(value = "login") String login){
+        List<User> users=userRepository.searchingUser(login);
 
+        return users;
+    }
     @DeleteMapping("users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer idUser)
             throws Exception {

@@ -7,6 +7,8 @@ import com.example.hybridsAPI.Repository.BookRepository;
 import com.example.hybridsAPI.Repository.RoleRepository;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,6 +22,7 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Secured("ADMIN")
     @GetMapping("/roles")
     public List<Role> getAllRoles(){
         return roleRepository.findAll();
