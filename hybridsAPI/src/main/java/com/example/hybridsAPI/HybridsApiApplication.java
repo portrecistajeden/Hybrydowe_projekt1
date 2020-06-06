@@ -32,6 +32,10 @@ public class HybridsApiApplication {
 		source.registerCorsConfiguration("/**", config);
 		FilterRegistrationBean bean = new FilterRegistrationBean<>(new CorsFilter(source));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+
+//		FilterRegistrationBean filterRegistrationBean=new FilterRegistrationBean();
+//		bean.setFilter(new JwtFilter());
+	//	bean.setUrlPatterns(Collections.singleton("/books/*"));
 		return bean;
 	}
 

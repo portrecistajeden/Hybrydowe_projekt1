@@ -21,7 +21,7 @@
 
 <script>
 import axios from 'axios';
-
+import {mapGetters} from 'vuex'
 export default {
   name: "Login",
   data() {
@@ -33,6 +33,18 @@ export default {
       },
       errors:[]
     };
+  },
+  computed:{
+      ...mapGetters({
+          logged:'logged',
+         // refresh:'refresh'
+        }
+      )
+  },
+  watch:{
+    refresh(){
+      this.$router.push("/book");
+    }
   },
  
  async mounted(){
@@ -47,12 +59,19 @@ export default {
    methods:{
     async Login(){
           try{
+
+            // this.$store.dispatch('login',{
+            //   login:this.user.username,
+            //   password:this.user.password
+            // })
              await axios.post('http://localhost:8080/login',{
               login:this.user.username,
               password:this.user.password
               
             });
-            this.$router.push("/");
+            this.$router.push("/books");
+             
+              this.$store.state.LoggedUser.login=this.user.username
            }
            catch(e){
            this.errors=[];

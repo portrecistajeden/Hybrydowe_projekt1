@@ -39,13 +39,6 @@ export default {
   },
  
  async mounted(){
-          //  try{
-          //   await axios.get('http://localhost:8080/users').then(users => this.usersList=users.data)
-             
-          //  }
-          //  catch(e){
-          //    console.error(e);
-          //  }
    },
    methods:{
     async Register(){
@@ -57,7 +50,7 @@ export default {
               password:this.user.password
               
             });
-            //this.$router.push("/");
+            this.$router.push("/users");
             console.log("succes");
            }
            catch(e){

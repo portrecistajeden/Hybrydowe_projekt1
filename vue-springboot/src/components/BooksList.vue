@@ -2,99 +2,90 @@
   <div class="list row">
     <div class="col-md-8">
    <div class="form-group col-md-8">
-    <input @keyup.enter="SearchingBook" class="search" v-model="searchValue">
+    <input @keyup.enter="SearchingBook" class="search" v-model="searchValue" placeholder="wyszukiwanie..">
     <select class="form-control" id="exampleFormControlSelect1" v-model="valueSelect" >
-      <option >Title</option>
-      <option>Authors</option>
-      <option>Year of publishment</option>
+      <option >Tytuł</option>
+      <option>Autorzy</option>
+      <option>Rok wydania</option>
     </select>
     </div>
       <div class="input-group mb-3">
       </div>
     </div>
-    
+    <div><input type="submit" @click="addBook()" value="Dodaj książkę"></div>
    
-    <div class="col-md-6">
-      <h4>Books List</h4>
-     
-      <ul>
-         <li v-for="book in library" :key="book.idBook">
-                         <p>{{book.title}}</p>
-                          <p>{{book.authors}} {{", "}} {{book.yearofpublishment}}</p> 
-                          <input type="submit" @click="deleteBook(book.idBook)" value="Delete">
-                           <!-- <input type="submit" @click="loansBook" value="Loans">   -->
-         </li>
-      </ul>
-    </div>
-    <div>
-      
-      <form>
-          <label>Title</label>
-         <p> <input
-            v-model="bookTitle"
-            type="text">
-        </p>
-         
-          <label>Authors</label>
-         <p> <input
-            v-model="bookAuthors"
-            type="text" >
-        </p>
-        
-          <label>Year of publishment</label>
-          <p> <input
-            v-model="bookYearOfPublishment"
-            type="text" >
-        </p>
-        <input type="submit" @click="addBook" value="Add">
-      </form>
-    </div>
+   
+    <table>
+      <tr>
+        <th>
+          Tytuł
+        </th>
+         <th>
+          Autorzy
+        </th>
+         <th>
+          Rok wydania
+        </th>
+        <th></th>
+      </tr>
+      <tr  v-for="book in library" :key="book.idBook">
+        <th>
+         {{book.title}}
+        </th>
+         <th>
+         {{book.authors}}
+        </th>
+         <th>
+          {{book.yearofpublishment}}
+        </th>
+        <th> <input type="submit" @click="deleteBook(book.idBook)" value="Usuń"></th>
+      </tr>
+    </table>
+   
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import {mapGetters} from 'vuex'
 export default {
   name: "BooksList",
   data() {
     return {
-      library: [],
-      bookTitle:'',
-      bookAuthors:'',
-      bookYearOfPublishment:null,
       searchValue:'',
-      valueSelect:'Title'
+      valueSelect:'Tytuł'
     };
+  },
+  computed:{
+      ...mapGetters({
+          library:'library',
+          refresh:'refresh'
+        }
+      )
+  },
+  watch:{
+    refresh(){
+       this.$store.dispatch('getBooks')
+    }
   },
  async mounted(){
            try{
-            await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
-             
+         //   await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
+             this.$store.dispatch('getBooks')
            }
            catch(e){
              console.error(e);
            }
    },
    methods:{
-      async addBook(){
-      try{
-            await axios.post('http://localhost:8080/books',{
-              title:this.bookTitle,
-              authors:this.bookAuthors,
-              yearofpublishment:this.bookYearOfPublishment
-            });
-            window.location.reload();
-           }
-           catch(e){
-             console.error(e);
-           }
-      },
+     addBook(){
+        this.$router.push("/addBook");
+     },
       async deleteBook(idBook){
       try{
-            await axios.delete('http://localhost:8080/books/'+idBook);
+           this.$store.dispatch('deleteBook',idBook)
            
             console.log(idBook);
-             window.location.reload();
+            // window.location.reload();
            }
            catch(e){
              console.error(e);
@@ -104,18 +95,17 @@ export default {
       async SearchingBook(){
          try{
            if(this.searchValue==""){
-              await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
+             this.$store.dispatch('getBooks')
            }
-           else if(this.valueSelect==='Title'){
+           else if(this.valueSelect==='Tytuł'){
              console.log("halo")
-               await axios.get('http://localhost:8080/books/title/'+this.searchValue).then(books => this.library=books.data)
-           }
-           else if(this.valueSelect==='Authors'){
-               await axios.get('http://localhost:8080/books/authors/'+this.searchValue).then(books => this.library=books.data)
+               this.$store.dispatch('searchTitle',this.searchValue)
+               }
+           else if(this.valueSelect==='Autorzy'){
+               this.$store.dispatch('searchAuthors',this.searchValue)
            }
           else {
-             await axios.get('http://localhost:8080/books/year/'+this.searchValue).then(books => this.library=books.data)
-       
+             this.$store.dispatch('searchYear',this.searchValue)
           }
            }
            catch(e){
@@ -138,5 +128,12 @@ export default {
   display: flex;
   flex-direction: column;
   width: 250px;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
 }
 </style>
