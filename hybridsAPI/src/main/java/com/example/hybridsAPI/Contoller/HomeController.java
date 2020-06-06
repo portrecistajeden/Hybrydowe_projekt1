@@ -1,7 +1,7 @@
 package com.example.hybridsAPI.Contoller;
 
-import com.example.hybridsAPI.Models.AuthRequest;
-import com.example.hybridsAPI.config.JwtUtil;
+import com.example.hybridsAPI.utils.AuthRequest;
+import com.example.hybridsAPI.utils.JwtUtil;
 import com.example.hybridsAPI.config.SecurityConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;

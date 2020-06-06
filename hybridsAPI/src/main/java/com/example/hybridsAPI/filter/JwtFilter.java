@@ -1,6 +1,6 @@
 package com.example.hybridsAPI.filter;
 
-import com.example.hybridsAPI.config.JwtUtil;
+import com.example.hybridsAPI.utils.JwtUtil;
 import com.example.hybridsAPI.config.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

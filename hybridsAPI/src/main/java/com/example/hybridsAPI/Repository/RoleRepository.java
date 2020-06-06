@@ -15,4 +15,7 @@ public interface RoleRepository extends JpaRepository<Role,Integer> {
 
     @Query("select r from Role r where r.role like :name%")
     Role findByName(@Param("name") String name);
+
+    @Query("select r from Role r where r.idRole=?1")
+    Role findByID(@Param("idRole") int idRole);
 }

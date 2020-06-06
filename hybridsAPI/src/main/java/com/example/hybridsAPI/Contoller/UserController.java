@@ -41,7 +41,7 @@ public class UserController {
 
 
     @PostMapping("/sign-up") //create normalUser
-    public User createUser(@Valid @RequestBody User user){
+    public User createUser(@RequestBody User user){
         user.setRole(roleRepository.findByName("ROLE_USER"));
         return userRepository.save(user);
     }

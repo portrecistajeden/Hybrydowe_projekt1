@@ -1,4 +1,4 @@
-package com.example.hybridsAPI.Models;
+package com.example.hybridsAPI.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

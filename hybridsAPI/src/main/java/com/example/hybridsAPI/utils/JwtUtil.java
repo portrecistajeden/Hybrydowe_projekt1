@@ -1,4 +1,4 @@
-package com.example.hybridsAPI.config;
+package com.example.hybridsAPI.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
