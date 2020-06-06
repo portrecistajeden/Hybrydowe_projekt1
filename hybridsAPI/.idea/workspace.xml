@@ -1,14 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e725b815-4e94-4918-a600-d18ea4609356" name="Default Changelist" comment="">
+    <list default="true" id="e725b815-4e94-4918-a600-d18ea4609356" name="Default Changelist" comment="metoda wypożyczenia">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Models/AuthRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/MyUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/SecurityConfigurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/filter/JwtFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_2_7_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hybridsAPI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/hybridsAPI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/HybridsApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/HybridsApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-springboot/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-springboot/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-springboot/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-springboot/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -22,11 +60,18 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="spring.boot" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.hybridsAPI.config" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.HybridsApiApplication">
     <configuration name="HybridsApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -65,33 +110,125 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591039560986</updated>
-      <workItem from="1591198308185" duration="2089000" />
+      <workItem from="1591198308185" duration="7166000" />
+      <workItem from="1591223764049" duration="275000" />
+      <workItem from="1591380229470" duration="13519000" />
+      <workItem from="1591404892313" duration="45000" />
+      <workItem from="1591440814501" duration="1984000" />
     </task>
+    <task id="LOCAL-00001" summary="metoda wypożyczenia">
+      <created>1591202681123</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1591202681123</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="metoda wypożyczenia" />
+    <option name="LAST_COMMIT_MESSAGE" value="metoda wypożyczenia" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="491" y="235" key="#Inspections" timestamp="1591403529365">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="491" y="235" key="#Inspections/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591403529365" />
+    <state x="478" y="270" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591384162203">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="478" y="270" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1728.1112@0.0.1728.1112" timestamp="1591384162203" />
+    <state x="670" y="263" key="#com.intellij.ide.util.MemberChooser" timestamp="1591441918512">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="670" y="263" key="#com.intellij.ide.util.MemberChooser/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591441918512" />
     <state x="798" y="192" key="FileChooserDialogImpl" timestamp="1591049401814">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="798" y="192" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591049401814" />
-    <state width="1357" height="155" key="GridCell.Tab.0.bottom" timestamp="1591192984300">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1685" height="305" key="GridCell.Tab.0.bottom" timestamp="1591442813152">
+      <screen x="0" y="0" width="1728" height="1112" />
     </state>
     <state width="1357" height="155" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591192984300" />
-    <state width="1357" height="155" key="GridCell.Tab.0.center" timestamp="1591192984300">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1685" height="305" key="GridCell.Tab.0.bottom/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591442813152" />
+    <state width="1685" height="305" key="GridCell.Tab.0.bottom/0.0.1728.1112@0.0.1728.1112" timestamp="1591223581429" />
+    <state width="1685" height="305" key="GridCell.Tab.0.center" timestamp="1591442813152">
+      <screen x="0" y="0" width="1728" height="1112" />
     </state>
     <state width="1357" height="155" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591192984300" />
-    <state width="1357" height="155" key="GridCell.Tab.0.left" timestamp="1591192984299">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1685" height="305" key="GridCell.Tab.0.center/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591442813152" />
+    <state width="1685" height="305" key="GridCell.Tab.0.center/0.0.1728.1112@0.0.1728.1112" timestamp="1591223581428" />
+    <state width="1685" height="305" key="GridCell.Tab.0.left" timestamp="1591442813152">
+      <screen x="0" y="0" width="1728" height="1112" />
     </state>
     <state width="1357" height="155" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591192984299" />
-    <state width="1357" height="155" key="GridCell.Tab.0.right" timestamp="1591192984300">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1685" height="305" key="GridCell.Tab.0.left/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591442813152" />
+    <state width="1685" height="305" key="GridCell.Tab.0.left/0.0.1728.1112@0.0.1728.1112" timestamp="1591223581428" />
+    <state width="1685" height="305" key="GridCell.Tab.0.right" timestamp="1591442813152">
+      <screen x="0" y="0" width="1728" height="1112" />
     </state>
     <state width="1357" height="155" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591192984300" />
+    <state width="1685" height="305" key="GridCell.Tab.0.right/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591442813152" />
+    <state width="1685" height="305" key="GridCell.Tab.0.right/0.0.1728.1112@0.0.1728.1112" timestamp="1591223581428" />
+    <state width="1685" height="376" key="GridCell.Tab.1.bottom" timestamp="1591404807211">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state width="1685" height="376" key="GridCell.Tab.1.bottom/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591404807211" />
+    <state width="1685" height="376" key="GridCell.Tab.1.center" timestamp="1591404807211">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state width="1685" height="376" key="GridCell.Tab.1.center/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591404807211" />
+    <state width="1685" height="376" key="GridCell.Tab.1.left" timestamp="1591404807211">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state width="1685" height="376" key="GridCell.Tab.1.left/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591404807211" />
+    <state width="1685" height="376" key="GridCell.Tab.1.right" timestamp="1591404807211">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state width="1685" height="376" key="GridCell.Tab.1.right/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591404807211" />
+    <state x="395" y="211" width="1207" height="689" key="Maven.ArtifactSearchDialog" timestamp="1591402606455">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="395" y="211" key="Maven.ArtifactSearchDialog/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591402606455" />
+    <state x="395" y="211" width="1207" height="689" key="Maven.ArtifactSearchDialog/0.0.1728.1112@0.0.1728.1112" timestamp="1591384488327" />
+    <state x="373" y="201" key="SettingsEditor" timestamp="1591384069754">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="373" y="201" key="SettingsEditor/0.0.1728.1112@0.0.1728.1112" timestamp="1591384069754" />
+    <state x="457" y="289" key="Vcs.Push.Dialog.v2" timestamp="1591202781982">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="457" y="289" key="Vcs.Push.Dialog.v2/0.0.1728.1112@0.0.1728.1112" timestamp="1591202781982" />
+    <state x="474" y="214" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591442353039">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="474" y="214" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1728.1112/2160.0.1920.1040@0.0.1728.1112" timestamp="1591442353039" />
+    <state x="623" y="269" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591223307178">
+      <screen x="0" y="0" width="1728" height="1112" />
+    </state>
+    <state x="623" y="269" key="git4idea.branch.GitSmartOperationDialog/0.0.1728.1112@0.0.1728.1112" timestamp="1591223307178" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="authRequest" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
