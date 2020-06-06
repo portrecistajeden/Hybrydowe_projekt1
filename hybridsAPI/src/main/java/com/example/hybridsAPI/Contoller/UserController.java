@@ -57,6 +57,11 @@ public class UserController {
         return userRepository.save(user);
     }
 
+    @GetMapping("/userid")
+    public Integer getUserId(@RequestBody User user){
+        User userID = userRepository.findByLogin(user.getLogin());
+        return userID.getIdUser();
+    }
 
     @PutMapping("/users/{id}") //update login, password, role
     public ResponseEntity<User> updateUser(
