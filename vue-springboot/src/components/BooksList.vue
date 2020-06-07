@@ -68,24 +68,14 @@ export default {
     }
   },
  async mounted(){
-   if(!localStorage.getItem('token')){
-     this.$router.push("/login")
-   }
-   else if(localStorage.getItem('idUser')=="1"){
- try{
-        
+           try{
+         //   await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
              this.$store.dispatch('getBooks')
            }
            catch(e){
              
              console.error(e);
            }
-   }
-   else{
-     this.$router.push("/")
-   }
-   
-          
    },
    methods:{
      addBook(){

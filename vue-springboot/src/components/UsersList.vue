@@ -53,22 +53,13 @@ export default {
     }
   },
  async mounted(){
-      if(!localStorage.getItem('token')){
-          this.$router.push("/login")
-        }
-      else if(localStorage.getItem('idUser')=="1"){
-          try{
-        
+           try{
+          // await axios.get('http://localhost:8080/users').then(users => this.library=users.data)
             this.$store.dispatch('getUsers')
            }
            catch(e){
              console.error(e);
            }
-      }
-      else{
-           this.$router.push("/")
-        }
-          
    },
    methods:{
      addUser(){

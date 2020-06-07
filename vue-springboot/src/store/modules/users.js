@@ -22,7 +22,7 @@ const actions={
         const auth={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
-         axios.get('https://hybrydkoweapi.azurewebsites.net/users',auth)
+         axios.get('http://localhost:8080/users',auth)
          .then(result=>commit('USERS',result.data))
            
     },
@@ -31,7 +31,7 @@ const actions={
         const auth1={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
-         axios.delete('https://hybrydkoweapi.azurewebsites.net/users/'+idUser,auth1)
+         axios.delete('http://localhost:8080/users/'+idUser,auth1)
          .then(()=>commit('REF'))
     },
 
@@ -39,14 +39,14 @@ const actions={
         const auth2={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
-         axios.post('https://hybrydkoweapi.azurewebsites.net/users',book,auth2)
+         axios.post('http://localhost:8080/users',book,auth2)
          .then(()=>commit('REF'))
     },
     searchUser({commit},searchValue){
         const auth3={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
-         axios.get('https://hybrydkoweapi.azurewebsites.net/users/username/'+searchValue,auth3)
+         axios.get('http://localhost:8080/users/username/'+searchValue,auth3)
         .then(result=>commit('USERS',result.data))
     }
 }

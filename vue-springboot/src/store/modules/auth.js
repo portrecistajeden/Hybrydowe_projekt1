@@ -11,7 +11,7 @@ const getters={
 
 const actions ={
     login({commit},user){
-         axios.post('https://hybrydkoweapi.azurewebsites.net/authenticate', user)
+         axios.post('http://localhost:8080/authenticate', user)
          .then(result=>{
              console.log(result.data),
              commit('REFRESH'),
@@ -23,7 +23,7 @@ const actions ={
     },
 
     getUserID({commit},user){
-        axios.post('https://hybrydkoweapi.azurewebsites.net/userid', user)
+        axios.post('http://127.0.0.1:8080/userid', user)
         .then(result=>{
             console.log(result.data),
             commit('REFRESH')
@@ -37,7 +37,6 @@ const actions ={
     logout(){
            
             localStorage.removeItem('token')
-            localStorage.removeItem('idUser')
            // this.store.state.isLoggedIn =null
     }
 

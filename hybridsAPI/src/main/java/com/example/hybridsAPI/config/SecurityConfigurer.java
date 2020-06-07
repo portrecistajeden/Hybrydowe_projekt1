@@ -43,10 +43,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers( "/authenticate", "/").permitAll()
-                .antMatchers("/books/available","/userid").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/users/**", "/roles/**","/books/**","/loans").hasAnyAuthority("ADMIN")
-                .anyRequest().permitAll()
+                .antMatchers( "/authenticate", "/","/userid").permitAll()
+                .antMatchers("/books/available","/books/rent/**","/books/return/**","/loans").authenticated()
+                .antMatchers("/users/**", "/roles/**","/books/**","/loans","/register","registerAdmin").hasAnyAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
