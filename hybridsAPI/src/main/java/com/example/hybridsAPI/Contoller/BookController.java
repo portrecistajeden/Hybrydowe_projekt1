@@ -47,24 +47,23 @@ public class BookController {
 
     @GetMapping("/books/available")
     public List<Book> getAvailableBooks(){
-        List<Book> booksAvailable = bookRepository.findAll();
         List<Book> books = bookRepository.findAll();
-        List<Book> rentedBooks = new ArrayList<>();
+        List<Book> booksAvailable = new ArrayList<>();
         List<Loan> userLoans = loansRepository.findAll();
-        for(Loan loan : userLoans){
-            rentedBooks.add(loan.getIdBook());
-        }
-        for(Book rentedBook : rentedBooks){
-            for(Book book : books){
-                if(book.getIdBook().equals(rentedBook.getIdBook())) {
-                    booksAvailable.remove(book);
-                    break;
+        int pom=0;
+        for(Book book:books){
+            pom=0;
+            for(Loan loan:userLoans){
+                if(book.getIdBook()==loan.getIdBook().getIdBook()){
+                    pom=1;
                 }
+            }
+            if(pom==0){
+                booksAvailable.add(book);
             }
         }
         return booksAvailable;
     }
-
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookbyId(@PathVariable(value = "id") int idbook)
             throws ResourceNotFoundException {
@@ -120,33 +119,28 @@ public class BookController {
     }
 
     @PostMapping("books/rent/{id}/{idUser}")
-    public Map<String, Boolean> rentBook(@PathVariable("id") int id, @PathVariable("idUser") int idUser) throws Exception {
+    public void rentBook(@PathVariable("id") int id, @PathVariable("idUser") int idUser) throws Exception {
 
-            Book book = null;
-            Map<String, Boolean> response = new HashMap<>();
-            Loan loanSearch = loansRepository.findByBookID(id);
-        if (loanSearch == null && loanSearch.getIdUser().getIdUser() != idUser) {
-            book = bookRepository.findByID(id);
+        Loan loanSearch = loansRepository.findByBookID(id);
+        if (loanSearch == null ||  loanSearch.getIdUser().getIdUser() != idUser) {
+            Book book = bookRepository.findByID(id);
             User user = userRepository.findByID(idUser);
 
+            System.out.println(book.getTitle());
+            System.out.println(user.getLogin());
 
             Loan loan = new Loan();
             loan.setIdUser(user);
             loan.setIdBook(book);
             loansRepository.save(loan);
-
-            response.put("rented book "+book.getTitle(), Boolean.TRUE);
-            return response;
         }
-        response.put("Book "+book.getTitle() + " is already rented", Boolean.TRUE);
-        return response;
     }
-
-    @GetMapping("/books/return/{id}/{idUser}")
+    @PostMapping("/books/return/{id}/{idUser}")
     public void returnBook (@PathVariable("id") int id, @PathVariable("idUser") int idUser){
 
         Loan loan = loansRepository.findByBookID(id);
         if(loan.getIdUser().getIdUser() == idUser)
             loansRepository.delete(loan);
     }
+
 }

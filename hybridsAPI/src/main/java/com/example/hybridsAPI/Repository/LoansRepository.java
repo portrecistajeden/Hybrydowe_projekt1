@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface LoansRepository extends JpaRepository<Loan,Integer> {
 
-    @Query("select l from Loan l where l.idUser=?1")
+    @Query("select l from Loan l where l.idUser.idUser=?1")
     List<Loan> findByUserID(@Param("idUser") int idUser);
 
     @Query("select l from Loan l where l.idBook.idBook=?1")

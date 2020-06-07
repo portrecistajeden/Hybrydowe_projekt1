@@ -25,7 +25,6 @@ public class UserController {
     @Autowired
     private RoleRepository roleRepository;
 
-
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -40,7 +39,10 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-
+    @PostMapping("/userid")
+    public Integer getUserId(@RequestBody User user){
+        User userr=userRepository.findByLogin(user.getLogin());
+        return userr.getIdUser();}
 
     @PostMapping("/registerAdmin") //create normalUser
     public User createAdmin(@RequestBody User user){
@@ -57,11 +59,6 @@ public class UserController {
         return userRepository.save(user);
     }
 
-    @GetMapping("/userid")
-    public Integer getUserId(@RequestBody User user){
-        User userID = userRepository.findByLogin(user.getLogin());
-        return userID.getIdUser();
-    }
 
     @PutMapping("/users/{id}") //update login, password, role
     public ResponseEntity<User> updateUser(
@@ -97,4 +94,21 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+    
+    @PostMapping("generatePassword")
+    public String generatePassword() {
+        int length=8;
+        String charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String retVal="";
+        int i=0;
+        double n=charset.length();
+        double x;
+        for ( i = 0; i < length; ++i) {
+            x=Math.floor(Math.random()*n);
+            retVal+=charset.charAt((int)x);
+        }
+        return retVal;
+    }
 }
+
+
