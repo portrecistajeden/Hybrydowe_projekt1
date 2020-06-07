@@ -94,4 +94,16 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return response;
     }
+//    @PostMapping("generatePassword")
+//    public String generatePassword() {
+//        int length=8;
+//        String charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+//        String retVal="";
+//        int i=0;
+//        int n=charset.length();
+//        for ( i = 0, n = charset.length; i < length; ++i) {
+//            retVal += charset.charAt(Math.floor(Math.random() * n));
+//        }
+//        return retVal;
+//    }
 }
