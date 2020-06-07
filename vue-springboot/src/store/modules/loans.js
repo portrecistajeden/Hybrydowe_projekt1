@@ -28,7 +28,7 @@ const actions={
         const auth={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
-         axios.get('http://localhost:8080/books/available',auth)
+         axios.get('https://hybrydkoweapi.azurewebsites.net/available',auth)
          .then(result=>commit('NOTBORROWEDBOOKS',result.data))
            
     },
@@ -37,7 +37,7 @@ const actions={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
         const idUserr=localStorage.getItem('idUser');
-         axios.get('http://localhost:8080/loans/'+idUserr,auth3)
+         axios.get('https://hybrydkoweapi.azurewebsites.net/loans/'+idUserr,auth3)
          .then(result=>commit('BORROWBOOKS',result.data))
            
     },
@@ -46,7 +46,7 @@ const actions={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
         const idUser=localStorage.getItem('idUser');
-         axios.post('http://localhost:8080/books/rent/'+idBook+"/"+idUser,auth2)
+         axios.post('https://hybrydkoweapi.azurewebsites.net/books/rent/'+idBook+"/"+idUser,auth2)
          .then(()=>commit('REFR'))
     },
     borrowBook({commit},idBook){
@@ -54,7 +54,7 @@ const actions={
             headers:{Authorization:"Bearer "+localStorage.getItem('token')}
         }
         const idUserrr=localStorage.getItem('idUser');
-         axios.post('http://localhost:8080/books/return/'+idBook+"/"+idUserrr,auth4)
+         axios.post('https://hybrydkoweapi.azurewebsites.net/books/return/'+idBook+"/"+idUserrr,auth4)
          .then(()=>commit('REFR'))
     }
     

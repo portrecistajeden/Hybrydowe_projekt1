@@ -6,9 +6,6 @@
 
 <script>
 export default {
-    name: "Home",
-    mounted(){
-        // window.location.reload();
-    }
+    name: "Home"
 }
 </script>

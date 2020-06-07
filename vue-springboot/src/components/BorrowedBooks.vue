@@ -54,20 +54,28 @@ export default {
     }
   },
  async mounted(){
-           try{
-         //   await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
+
+  
+      if(!localStorage.getItem('token')){
+          this.$router.push("/login")
+        }
+        else{
+            try{
+      
              this.$store.dispatch('getBorrowedBooks')
            }
            catch(e){
              
              console.error(e);
            }
+        }
+    
+         
    },
    methods:{
        borrow(idBook){
            try{
-               //console.log(idBook)
-         //   await axios.get('http://localhost:8080/books').then(books => this.library=books.data)
+             
              this.$store.dispatch('borrowBook',idBook)
            }
            catch(e){

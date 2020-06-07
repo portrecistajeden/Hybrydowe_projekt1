@@ -9,7 +9,12 @@
 <script>
 export default {
     name:"Logout",
-
+    mounted(){
+      if(!localStorage.getItem('token')){
+          this.$router.push("/login")
+        }
+        
+    },
      methods:{
          Logout(){
              this.$store.dispatch('logout')

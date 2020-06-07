@@ -7,10 +7,11 @@
    
   <div class="form-group">
     <input type="text" v-model="user.username" placeholder="login" required>
-    <br> <input type="password" v-model="user.password" placeholder="password" required >
-    <br><input type="checkbox" v-model="checkAdmin" value="Admin">
-    <label style="padding :5px">Admin?</label>
-    <!-- <br> <input type="submit" @click="Register"  value="Create"> -->
+    <br> <input type="text" v-model="user.password" placeholder="password" required >
+   
+    <input type="submit" @click="GeneretePswd()" value="Generuj losowe hasło">
+
+     <br><input type="submit" @click="Register"  value="Stwórz">
   </div>
   <p v-if="errors.length">
     <a style="color:red" v-for="error in errors" :key="error">{{ error }}</a>
@@ -38,8 +39,15 @@ export default {
     };
   },
  
- async mounted(){
-   },
+   mounted(){
+      if(!localStorage.getItem('token')){
+          this.$router.push("/login")
+        }
+        else if(localStorage.getItem('idUser')!="1"){
+           this.$router.push("/")
+        }
+        
+    },
    methods:{
     async Register(){
        const auth={
@@ -49,7 +57,7 @@ export default {
              
               try{
                
-             await axios.post('http://localhost:8080/register',{
+             await axios.post('https://hybrydkoweapi.azurewebsites.net/register',{
               login:this.user.username,
               password:this.user.password}, auth);
             this.$router.push("/users");
@@ -61,21 +69,19 @@ export default {
            }
 
           }
-          else{
-          //      console.log(this.checkAdmin);
-          //     try{
-          //    await axios.post('http://localhost:8080/registerAdmin',{
-          //     login:this.user.username,
-          //     password:this.user.password},auth);
-          //   //this.$router.push("/");
-          //   console.log("succes");
-          //  }
-          //  catch(e){
-          //  this.errors=[];
-          //  this.errors.push("Invalid login or password")
-           //} 
-          }
           
+   },
+   async GeneretePswd(){
+      try{
+         const auth={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}}
+            await axios.post('https://hybrydkoweapi.azurewebsites.net/generatePassword', auth)
+            .then(result=>{
+                this.user.password=result.data;
+            });
+      }catch(e){
+          console.log(e)
+      }
    }
 
    }

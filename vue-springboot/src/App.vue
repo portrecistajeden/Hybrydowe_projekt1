@@ -36,13 +36,6 @@ export default {
     return {
       isLog:''
     };
-  },
-  mounted(){
-    
-    // if(localStorage.getItem('token')){
-    //   this.isLog=localStorage.getItem('token')
-    //   console.log(this.isLog)
-    // }
   }
 
 }

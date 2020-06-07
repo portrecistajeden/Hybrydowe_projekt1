@@ -38,15 +38,19 @@ export default {
         
         
     },
+    mounted(){
+      if(!localStorage.getItem('token')){
+          this.$router.push("/login")
+        }
+        else if(localStorage.getItem('idUser')!="1"){
+           this.$router.push("/")
+        }
+        
+    },
     methods:{
       async addBook(){
       try{
-        //  await axios.post('http://localhost:8080/books/create',{
-        //       authors:this.book.bookAuthors,
-        //       title:this.book.bookTitle,
-        //       yearofpublishment:this.book.bookYearOfPublishment
-              
-        //     });
+       
          this.$store.dispatch('addBook',{
               authors:this.book.bookAuthors,
               title:this.book.bookTitle,
