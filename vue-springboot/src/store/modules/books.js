@@ -23,31 +23,48 @@ const getters={
 //wywołuje axios'owe puknięcie
 const actions={
     getBooks({commit}){
-         axios.get('http://localhost:8080/books')
+        const auth={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.get('http://localhost:8080/books',auth)
          .then(result=>commit('LIBRARY',result.data))
            
     },
 
     deleteBook({commit},idBook){
-         axios.delete('http://localhost:8080/books/'+idBook)
+        const auth2={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.delete('http://localhost:8080/books/delete/'+idBook,auth2)
          .then(()=>commit('REFRESH'))
     },
 
     addBook({commit},book){
-        console.log(book)
-         axios.post('http://localhost:8080/books',book)
+        const auth3={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.post('http://localhost:8080/books/create',book,auth3)
          .then(()=>commit('REFRESH'))
     },
     searchTitle({commit},searchValue){
-         axios.get('http://localhost:8080/books/title/'+searchValue)
+        const auth4={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.get('http://localhost:8080/books/title/'+searchValue,auth4)
         .then(result=>commit('LIBRARY',result.data))
     },
     searchAuthors({commit},searchValue){
-         axios.get('http://localhost:8080/books/authors/'+searchValue)
+        const auth5={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.get('http://localhost:8080/books/authors/'+searchValue,auth5)
         .then(result=>commit('LIBRARY',result.data))
     },
     searchYear({commit},searchValue){
-         axios.get('http://localhost:8080/books/year/'+searchValue)
+        const auth6={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token'),auth6}
+        }
+         axios.get('http://localhost:8080/books/year/'+searchValue,auth6)
         .then(result=>commit('LIBRARY',result.data))
     }
 }

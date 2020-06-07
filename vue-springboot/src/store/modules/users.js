@@ -19,22 +19,34 @@ const getters={
 //wywołuje axios'owe puknięcie
 const actions={
     getUsers({commit}){
-         axios.get('http://localhost:8080/users')
+        const auth={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.get('http://localhost:8080/users',auth)
          .then(result=>commit('USERS',result.data))
            
     },
 
     deleteUser({commit},idUser){
-         axios.delete('http://localhost:8080/users/'+idUser)
+        const auth1={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.delete('http://localhost:8080/users/'+idUser,auth1)
          .then(()=>commit('REF'))
     },
 
     addUser({commit},book){
-         axios.post('http://localhost:8080/users',book)
+        const auth2={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.post('http://localhost:8080/users',book,auth2)
          .then(()=>commit('REF'))
     },
     searchUser({commit},searchValue){
-         axios.get('http://localhost:8080/users/username/'+searchValue)
+        const auth3={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}
+        }
+         axios.get('http://localhost:8080/users/username/'+searchValue,auth3)
         .then(result=>commit('USERS',result.data))
     }
 }

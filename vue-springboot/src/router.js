@@ -7,6 +7,8 @@ import Home from "./components/Home.vue";
 import Logout from "./components/Logout.vue";
 import AddBook from "./components/AddBook.vue";
 import UsersList from "./components/UsersList.vue";
+import BorrowedBooks from "./components/BorrowedBooks.vue";
+import Loans from "./components/Loans.vue";
 import Vuelidate from "vuelidate";
 Vue.use(Router)
 Vue.use(Vuelidate);
@@ -43,6 +45,12 @@ export default new Router({
         },{
           path:"/users",
           component:UsersList
+        },{
+          path:"/loans",
+          component:Loans
+        },{
+          path:"/borrow",
+          component:BorrowedBooks
         }
     ],
     

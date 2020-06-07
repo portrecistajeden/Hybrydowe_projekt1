@@ -16,4 +16,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Query("select u from User u where u.login like :login%")
     List<User> searchingUser(@Param("login") String login);
+
+    @Query("select u from User u where u.idUser=?1")
+    User findByID(@Param("idUser") Integer idUser);
 }

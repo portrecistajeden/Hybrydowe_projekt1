@@ -11,40 +11,33 @@ const getters={
 
 const actions ={
     login({commit},user){
-        //console.log(user)
-        // return new Promise((resolve, reject)=>{
-        //     commit('auth_request')
-        //     axios({url:'http://localhost:8080/authenticate', data:user, method:'POST'})
-        //     .then(result=>{
-        //         const token=result.data
-        //         localStorage.setItem('token', token)
-        //         axios.defaults.headers.common['Authorization']=token
-        //         resolve(result)
-        //     })
-        //     .catch(err=>{
-        //         commit('auth_err')
-        //         localStorage.removeItem('token')
-        //         reject(err)
-        //     })
-               
-        // })
          axios.post('http://localhost:8080/authenticate', user)
          .then(result=>{
              console.log(result.data),
              commit('REFRESH'),
              localStorage.setItem('token', result.data)
+             
             }
         )
         
     },
 
-    logout({commit}){
-        return new Promise((resolve)=>{
-            commit('logout')
+    getUserID({commit},user){
+        axios.post('http://127.0.0.1:8080/userid', user)
+        .then(result=>{
+            console.log(result.data),
+            commit('REFRESH')
+             localStorage.setItem('idUser', result.data)
+            
+           }
+       )
+       
+   },
+
+    logout(){
+           
             localStorage.removeItem('token')
-            delete axios.defaults.headers.common['Authorization']
-            resolve()
-        })
+           // this.store.state.isLoggedIn =null
     }
 
     

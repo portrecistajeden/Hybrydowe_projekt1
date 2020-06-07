@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,35 @@ public class BookController {
         return bookRepository.findAll();
     }
 
+    @GetMapping("/books/rented/{idUser}")
+    public List<Book> getRentedUserBooks(@PathVariable("idUser") int idUser){
+        List<Book> books = new ArrayList<>();
+        List<Loan> userLoans = loansRepository.findByUserID(idUser);
+        for (Loan loan : userLoans) {
+            books.add(bookRepository.findByID(loan.getIdBook().getIdBook()));
+        }
+        return books;
+    }
+
+    @GetMapping("/books/available")
+    public List<Book> getAvailableBooks(){
+        List<Book> books = bookRepository.findAll();
+        List<Book> booksAvailable = new ArrayList<>();
+        List<Loan> userLoans = loansRepository.findAll();
+        int pom=0;
+        for(Book book:books){
+            pom=0;
+            for(Loan loan:userLoans){
+                if(book.getIdBook()==loan.getIdBook().getIdBook()){
+                    pom=1;
+                }
+            }
+            if(pom==0){
+                booksAvailable.add(book);
+            }
+        }
+        return booksAvailable;
+    }
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookbyId(@PathVariable(value = "id") int idbook)
             throws ResourceNotFoundException {
@@ -70,7 +100,7 @@ public class BookController {
         return book;
     }
 
-    @DeleteMapping("/books/{id}")
+    @DeleteMapping("/books/delete/{id}")
     public Map<String, Boolean> deleteBook(@PathVariable(value = "id") Integer id) throws Exception {
         Book book =
                 bookRepository
@@ -83,35 +113,34 @@ public class BookController {
         return response;
     }
 
-    @PostMapping("/books")
+    @PostMapping("/books/create")
     public Book createBook( @RequestBody Book book) {
         return bookRepository.save(book);
     }
 
-    @GetMapping("books/{id}/rent")
-    public Map<String, Boolean> rentBook(@PathVariable(value = "id") int id, @RequestParam(value = "idUser") int idUser) throws Exception{
+    @PostMapping("books/rent/{id}/{idUser}")
+    public void rentBook(@PathVariable("id") int id, @PathVariable("idUser") int idUser) throws Exception {
 
-        Map<String, Boolean> response = new HashMap<>();
+        Loan loanSearch = loansRepository.findByBookID(id);
+        if (loanSearch == null ||  loanSearch.getIdUser().getIdUser() != idUser) {
+            Book book = bookRepository.findByID(id);
+            User user = userRepository.findByID(idUser);
 
-        if(loansRepository.findByBookID(id)==null && loansRepository.findByUserID(idUser)==null){
-            Book book =
-                    bookRepository
-                            .findById(id)
-                            .orElseThrow(() -> new ResourceNotFoundException("Book not found on :: " + id));
-            User user =
-                    userRepository
-                            .findById(idUser)
-                            .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + id));
+            System.out.println(book.getTitle());
+            System.out.println(user.getLogin());
 
             Loan loan = new Loan();
             loan.setIdUser(user);
             loan.setIdBook(book);
             loansRepository.save(loan);
-
-            response.put("Rented a book " + book.getTitle(), Boolean.TRUE);
-            return response;
         }
-        response.put("Could not rent a book ", Boolean.TRUE);
-        return response;
     }
+    @PostMapping("/books/return/{id}/{idUser}")
+    public void returnBook (@PathVariable("id") int id, @PathVariable("idUser") int idUser){
+
+        Loan loan = loansRepository.findByBookID(id);
+        if(loan.getIdUser().getIdUser() == idUser)
+            loansRepository.delete(loan);
+    }
+
 }

@@ -25,7 +25,6 @@ public class UserController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -40,7 +39,10 @@ public class UserController {
         return ResponseEntity.ok().body(user);
     }
 
-
+    @PostMapping("/userid")
+    public Integer getUserId(@RequestBody User user){
+        User userr=userRepository.findByLogin(user.getLogin());
+        return userr.getIdUser();}
 
     @PostMapping("/registerAdmin") //create normalUser
     public User createAdmin(@RequestBody User user){

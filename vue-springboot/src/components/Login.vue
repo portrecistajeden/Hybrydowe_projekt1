@@ -21,7 +21,6 @@
 
 <script>
 //import axios from 'axios';
-//import {mapGetters} from 'vuex'
 export default {
   name: "Login",
   data() {
@@ -34,13 +33,17 @@ export default {
       errors:[]
     };
   },
-
    methods:{
     async Login(){
           try{
          //   console.log(this.user.username)
           //  console.log(this.user.password)
             this.$store.dispatch('login',{
+              login:this.user.username,
+              password:this.user.password
+            })
+
+             this.$store.dispatch('getUserID',{
               login:this.user.username,
               password:this.user.password
             })
@@ -57,8 +60,20 @@ export default {
               
             // });
            // this.$router.push("/books");
-             
+            // await axios.get.push() this.$store.dispatch('getIdUser',{
+            //      login:this.user.username,
+            //       password:this.user.password
+            //  })
               this.$store.state.LoggedUser.login=this.user.username
+              // await axios.get('http://127.0.0.1:8080/userid',{
+              // login:this.user.username,
+              // password:this.user.password})
+              // .then(result=>{
+              //   //  localStorage.setItem('idUser', result)
+              //   console.log(result)
+              // });
+               this.$router.push("/")
+               
            }
            catch(e){
            this.errors=[];

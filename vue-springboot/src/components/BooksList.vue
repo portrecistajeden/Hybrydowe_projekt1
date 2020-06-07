@@ -73,8 +73,7 @@ export default {
              this.$store.dispatch('getBooks')
            }
            catch(e){
-             console.log("wtf")
-             this.$router.push('/login')
+             
              console.error(e);
            }
    },
@@ -106,7 +105,7 @@ export default {
            else if(this.valueSelect==='Autorzy'){
                this.$store.dispatch('searchAuthors',this.searchValue)
            }
-          else {
+          else if(this.valueSelect==='Rok wydania'){
              this.$store.dispatch('searchYear',this.searchValue)
           }
            }

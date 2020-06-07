@@ -24,7 +24,7 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
+//import axios from 'axios'
 export default {
     name:"AddBook",
     data(){
@@ -41,18 +41,18 @@ export default {
     methods:{
       async addBook(){
       try{
-         await axios.post('http://localhost:8080/books',{
-              authors:this.book.bookAuthors,
-              title:this.book.bookTitle,
-              yearofpublishment:this.book.bookYearOfPublishment
-              
-            });
-        //  this.$store.dispatch('addBook',{
+        //  await axios.post('http://localhost:8080/books/create',{
         //       authors:this.book.bookAuthors,
         //       title:this.book.bookTitle,
         //       yearofpublishment:this.book.bookYearOfPublishment
               
-        //     })
+        //     });
+         this.$store.dispatch('addBook',{
+              authors:this.book.bookAuthors,
+              title:this.book.bookTitle,
+              yearofpublishment:this.book.bookYearOfPublishment
+              
+            })
             
              this.$router.push("/books");
          //   window.location.reload();

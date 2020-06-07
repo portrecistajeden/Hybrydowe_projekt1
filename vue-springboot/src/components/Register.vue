@@ -10,7 +10,7 @@
     <br> <input type="password" v-model="user.password" placeholder="password" required >
     <br><input type="checkbox" v-model="checkAdmin" value="Admin">
     <label style="padding :5px">Admin?</label>
-    <br> <input type="submit" @click="Register"  value="Create">
+    <!-- <br> <input type="submit" @click="Register"  value="Create"> -->
   </div>
   <p v-if="errors.length">
     <a style="color:red" v-for="error in errors" :key="error">{{ error }}</a>
@@ -42,38 +42,38 @@ export default {
    },
    methods:{
     async Register(){
+       const auth={
+            headers:{Authorization:"Bearer "+localStorage.getItem('token')}}
          if(this.checkAdmin==false){
              console.log(this.checkAdmin);
+             
               try{
+               
              await axios.post('http://localhost:8080/register',{
               login:this.user.username,
-              password:this.user.password
-              
-            });
+              password:this.user.password}, auth);
             this.$router.push("/users");
             console.log("succes");
            }
            catch(e){
            this.errors=[];
-           this.errors.push("Invalid login or password")
+           this.errors.push("")
            }
 
           }
           else{
-               console.log(this.checkAdmin);
-              try{
-             await axios.post('http://localhost:8080/registerAdmin',{
-              login:this.user.username,
-              password:this.user.password
-              
-            });
-            //this.$router.push("/");
-            console.log("succes");
-           }
-           catch(e){
-           this.errors=[];
-           this.errors.push("Invalid login or password")
-           } 
+          //      console.log(this.checkAdmin);
+          //     try{
+          //    await axios.post('http://localhost:8080/registerAdmin',{
+          //     login:this.user.username,
+          //     password:this.user.password},auth);
+          //   //this.$router.push("/");
+          //   console.log("succes");
+          //  }
+          //  catch(e){
+          //  this.errors=[];
+          //  this.errors.push("Invalid login or password")
+           //} 
           }
           
    }
