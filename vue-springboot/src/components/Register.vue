@@ -9,7 +9,7 @@
     <input type="text" v-model="user.username" placeholder="login" required>
     <br> <input type="text" v-model="user.password" placeholder="password">
 
-    <button  @click="GeneretePswd()" >Generuj losowe hasło</button>
+    <input type="button" @click="GeneretePswd()" value="Generuj losowe hasło">
 
      <br><input type="submit" @click="Register()"  value="Stwórz">
   </div>

@@ -44,8 +44,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers( "/authenticate", "/","/userid","/generatePassword").permitAll()
-                .antMatchers("/books/available","/books/rent/{id}/{idUser}","/books/return/**","/loans").hasAnyAuthority("USER","ADMIN")
-                .antMatchers("/users/**", "/roles/**","/books/**","/loans","/register","/registerAdmin","/books/rent/{id}/{idUser}").hasAnyAuthority("ADMIN")
+                .antMatchers("/books/available","/loans","/books/rent/**/**","/books/return/**/**").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/users/**", "/roles/**","/books/**","/loans","/register","/registerAdmin").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().and().sessionManagement()
