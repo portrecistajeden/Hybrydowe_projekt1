@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="173c49e7-8b10-4ef7-9074-ddaa5cd297c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/SecurityConfigurer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +81,17 @@
       <workItem from="1591526686320" duration="1421000" />
       <workItem from="1591528730523" duration="7036000" />
       <workItem from="1591537213149" duration="809000" />
+      <workItem from="1591569079774" duration="699000" />
+      <workItem from="1591570228932" duration="78000" />
+      <workItem from="1591570883600" duration="51000" />
+      <workItem from="1591571145126" duration="131000" />
+      <workItem from="1591571644571" duration="138000" />
+      <workItem from="1591572018183" duration="63000" />
+      <workItem from="1591572144135" duration="645000" />
+      <workItem from="1591572856374" duration="38000" />
+      <workItem from="1591573526589" duration="164000" />
+      <workItem from="1591573804335" duration="116000" />
+      <workItem from="1591574444769" duration="100000" />
     </task>
     <servers />
   </component>
