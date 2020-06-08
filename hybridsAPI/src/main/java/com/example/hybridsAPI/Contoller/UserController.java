@@ -86,13 +86,18 @@ public class UserController {
     @DeleteMapping("/users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer idUser)
             throws Exception {
+        Map<String, Boolean> response = new HashMap<>();
         User user = userRepository
                 .findById(idUser)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found on :: " + idUser));
 
-        userRepository.delete(user);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
+        if(user.getRole().getIdRole()!=1){
+            userRepository.delete(user);
+            response.put("deleted", Boolean.TRUE);
+            return response;
+        }
+
+        response.put("CAN'T DELETE ADMIN", Boolean.FALSE);
         return response;
     }
 
