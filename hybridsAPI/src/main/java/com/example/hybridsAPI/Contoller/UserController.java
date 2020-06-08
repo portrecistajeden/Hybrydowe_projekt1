@@ -53,8 +53,9 @@ public class UserController {
     @PostMapping("/register") //create normalUser
     public User createUser(@RequestBody User user){
         user.setRole(roleRepository.findByName("USER"));
-        if(user.getLogin().equals(userRepository.findByLogin(user.getLogin()))){
-            return user;
+        String repoLogin = userRepository.findByLogin(user.getLogin()).getLogin();
+        if(user.getLogin().equals(repoLogin)){
+            return null;
         }
         return userRepository.save(user);
     }
