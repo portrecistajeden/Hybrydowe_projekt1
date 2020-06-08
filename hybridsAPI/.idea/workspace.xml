@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="173c49e7-8b10-4ef7-9074-ddaa5cd297c1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/Contoller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/SecurityConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/hybridsAPI/config/SecurityConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../vue-springboot/src/components/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vue-springboot/src/components/Register.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +95,8 @@
       <workItem from="1591573526589" duration="164000" />
       <workItem from="1591573804335" duration="116000" />
       <workItem from="1591574444769" duration="100000" />
+      <workItem from="1591610176008" duration="34000" />
+      <workItem from="1591615478309" duration="735000" />
     </task>
     <servers />
   </component>

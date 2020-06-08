@@ -7,9 +7,9 @@
    
   <div class="form-group">
     <input type="text" v-model="user.username" placeholder="login" required>
-    <br> <input type="text" v-model="user.password" placeholder="password" required >
-   
-    <input type="submit" @click="GeneretePswd()" value="Generuj losowe hasło">
+    <br> <input type="text" v-model="user.password" placeholder="password">
+
+    <button  @click="GeneretePswd()" >Generuj losowe hasło</button>
 
      <br><input type="submit" @click="Register()"  value="Stwórz">
   </div>
@@ -78,6 +78,7 @@ export default {
             await axios.post('https://hybrydkoweapi.azurewebsites.net/generatePassword', auth)
             .then(result=>{
                 this.user.password=result.data;
+                console.log(result.data)
             });
       }catch(e){
           console.log(e)

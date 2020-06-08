@@ -30,7 +30,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("users/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable(value = "id") Integer idUser)
             throws ResourceNotFoundException{
         User user = userRepository
@@ -82,7 +82,7 @@ public class UserController {
 
         return users;
     }
-    @DeleteMapping("users/{id}")
+    @DeleteMapping("/users/{id}")
     public Map<String, Boolean> deleteUser(@PathVariable(value = "id") Integer idUser)
             throws Exception {
         User user = userRepository
@@ -95,7 +95,7 @@ public class UserController {
         return response;
     }
 
-    @PostMapping("generatePassword")
+    @PostMapping("/generatePassword")
     public String generatePassword() {
         int length=8;
         String charset="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

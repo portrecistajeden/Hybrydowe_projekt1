@@ -118,7 +118,7 @@ public class BookController {
         return bookRepository.save(book);
     }
 
-    @PostMapping("books/rent/{id}/{idUser}")
+    @PostMapping("/books/rent/{id}/{idUser}")
     public void rentBook(@PathVariable("id") int id, @PathVariable("idUser") int idUser) throws Exception {
 
         Loan loanSearch = loansRepository.findByBookID(id);
